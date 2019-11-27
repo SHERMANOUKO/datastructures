@@ -23,7 +23,6 @@ class Stack(object):
         return len(self.items)
 
 class Queue(object):
-    """queue class for level order"""
     def __init__(self):
         self.items = []
 
@@ -57,6 +56,7 @@ class BinaryTree(object):
     def __init__(self, root):
         self.root = Node(root)
 
+    #print tree
     def print_tree(self, traversal_type):
         if traversal_type == 'preorder':
             return self.preorder(tree.root, "")
@@ -72,6 +72,7 @@ class BinaryTree(object):
             print("invalid choice")
             return False
 
+    #preorder traversal
     def preorder(self, start, traversal):
         """root->left->right"""
         if start:
@@ -80,6 +81,7 @@ class BinaryTree(object):
             traversal = self.preorder(start.right, traversal)
         return traversal
 
+    #inorder traversal
     def inorder(self, start, traversal):
         """left->root->right"""
         if start:
@@ -88,6 +90,7 @@ class BinaryTree(object):
             traversal = self.inorder(start.right, traversal)
         return traversal
 
+    #post order traversal
     def postorder(self, start, traversal):
         """left->right->root"""
         if start:
@@ -96,6 +99,7 @@ class BinaryTree(object):
             traversal += (str(start.value) + "-")
         return traversal
 
+    #level order traversal
     def levelorder(self, start):
         if start is None:
             return
@@ -115,6 +119,7 @@ class BinaryTree(object):
 
         return traversal
 
+    #reverse level order traversal
     def reverse_levelorder(self, start):
         if start is None:
             return
@@ -139,6 +144,7 @@ class BinaryTree(object):
         
         return traversal
 
+    #size of tree
     def size(self):
         if self.root is None:
             return 0
@@ -157,12 +163,14 @@ class BinaryTree(object):
                 stack.push(node.right)
         return size
 
+    #size of tree recursivelly
     def size_recursively(self, node):
         if node is None:
             return 0
 
         return 1 + self.size_recursively(node.left) + self.size_recursively(node.right)
 
+    #heigh of tree
     def height(self, node):
         if node is None:
             return -1
